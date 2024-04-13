@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+	<!--This title appears in the browser tab-->
+	<title>First Leaflet Map</title>
+	<!--This is a link to the Leaflet stylesheet--> 
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/> 
+	<!--This is a link to the Leaflet JavaScript library-->
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+</head>
+<body>
+	<!--The map div which hosts map object -->
+	<div id="mapleeds" style = 'height: 900px; width: 1900px;'></div>
+	<p>Map is centred to University of Leeds. Zoom level is 16.</p>
+	<script type="text/javascript" >
+	
+		//Create the map object and set the centre point and zoom level
+		var map = L.map('mapleeds');
+		map.setView([53.8043, -1.5548], 16);
+		
+		//Load tiles from open street map
+		L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution:'Map data ©OpenStreetMap contributors, CC-BY-SA, Imagery ©CloudMade',
+			maxZoom: 30
+		}).addTo(map); //add the basetiles to the map object
+		
+		var marker = L.marker([53.8043, -1.5548]).addTo(map);
+		marker.bindPopup("<b>School of Geography Manton Building</b><br>University of Leeds, Seminary St, Woodhouse, Leeds LS2 9JT.");
+	    
+		var marker1 = L.marker([53.804865, -1.553795]).addTo(map).bindPopup("<b>Food Science Building</b><br>School of Food Science and Nutrition. Woodhouse, Leeds LS2 3AA");
+		var marker2 = L.marker([53.806389, -1.553485]).addTo(map).bindPopup("<b>School of English</b><br>English Language School located in University of Leeds. Woodhouse Ln, Woodhouse, Leeds LS2 9JT");
+		var marker3 = L.marker([53.806765, -1.556568]).addTo(map).bindPopup("<b>Leeds University Union</b><br>Student union of University of Leeds. Lifton Pl, Woodhouse, Leeds LS2 9JZ");
+		var marker4 = L.marker([53.807472, -1.557483]).addTo(map).bindPopup("<b>School of Psychology</b><br>School of Psychology. University Rd, Woodhouse, Leeds LS2 9JT");
+		var marker5 = L.marker([53.807509, -1.554601]).addTo(map).bindPopup("<b>The Great Hall</b><br>Auditorium of University of Leeds. Great Hall, Woodhouse, Leeds LS2 9JT");
+		
+		var polygon = L.polygon([ [53.805450, -1.556103], [53.804778, -1.556111], [53.804780, -1.555374], [53.805100, -1.555288], [53.805118, -1.554771], [53.805454, -1.554764]]).addTo(map)
+		.bindPopup("<b>Chancellor's Court</b><br>A small park and garden in University of Leeds. Woodhouse, Leeds LS2 9NH");
+		
+	</script>
+</body>
